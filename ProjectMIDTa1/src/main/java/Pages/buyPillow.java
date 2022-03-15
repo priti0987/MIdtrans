@@ -8,10 +8,6 @@ import org.openqa.selenium.WebElement;
 
 public class buyPillow {
 	 WebDriver driver;
-	public buyPillow(WebDriver okdriver)
-	{
-		this.driver = okdriver;
-	}
 	 
 	
 	private By buyButtonXpath = By.xpath("//a[@class='btn buy']");
@@ -27,15 +23,16 @@ public class buyPillow {
 	private By payNowButtonXpath = By.xpath("//a[@class='button-main-content']");
 
 	
+	public buyPillow(WebDriver driver2) {
+		this.driver = driver2;	}
+
 	public void buyPillowPage() {
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-
 		driver.findElement(buyButtonXpath).click();
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(checkoutButtonXpath).click();
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-		
-		 WebElement fswich = driver.findElement(By.tagName("iframe"));
+		WebElement fswich = driver.findElement(By.tagName("iframe"));
 	     driver.switchTo().frame(fswich);
 	     driver.findElement(continueButton).click();
 	     driver.switchTo().defaultContent();
