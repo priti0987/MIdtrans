@@ -7,8 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class buyPillow {
-	 WebDriver driver;
-	 
+	 WebDriver driver;	 
 	
 	private By buyButtonXpath = By.xpath("//a[@class='btn buy']");
 	private By checkoutButtonXpath = By.xpath("//div[@class='cart-checkout']");
@@ -26,13 +25,15 @@ public class buyPillow {
 	public buyPillow(WebDriver driver2) {
 		this.driver = driver2;	}
 
+	@SuppressWarnings("deprecation")
 	public void buyPillowPage() {
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(buyButtonXpath).click();
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(checkoutButtonXpath).click();
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-		WebElement fswich = driver.findElement(By.tagName("iframe"));
+		
+		 WebElement fswich = driver.findElement(By.tagName("iframe"));
 	     driver.switchTo().frame(fswich);
 	     driver.findElement(continueButton).click();
 	     driver.switchTo().defaultContent();
@@ -43,9 +44,9 @@ public class buyPillow {
 	     driver.findElement(creditCadrButtonXpath).click();
 	     driver.switchTo().defaultContent();
 
-		
 	}
 
+	@SuppressWarnings("deprecation")
 	public void enterCardDetails() {
 		WebElement fswich2 = driver.findElement(By.tagName("iframe"));
 	     driver.switchTo().frame(fswich2);

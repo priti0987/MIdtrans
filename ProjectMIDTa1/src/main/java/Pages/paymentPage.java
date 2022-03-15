@@ -4,14 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import java.io.File;
 
 public class paymentPage {
 	
@@ -25,7 +23,7 @@ public class paymentPage {
 	private String otp = "112233";
 	private By buttonOKXpath = By.xpath("//button[@name='ok']");
 	
-	
+	@SuppressWarnings("deprecation")
 	public void paymentPAGE() throws IOException {
 		WebElement fswich3 = driver.findElement(By.tagName("iframe"));
 	    driver.switchTo().frame(fswich3);
@@ -38,11 +36,9 @@ public class paymentPage {
 	    File filemids = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(filemids,new File(path));
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-	 			
-	}
+	 }
+	
 	public void closeDriver() {
 		driver.quit();		
 	}
-	
-
 }
