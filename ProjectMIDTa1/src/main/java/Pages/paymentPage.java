@@ -25,6 +25,7 @@ public class paymentPage {
 	
 	@SuppressWarnings("deprecation")
 	public void paymentPAGE() throws IOException {
+		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		WebElement fswich3 = driver.findElement(By.tagName("iframe"));
 	    driver.switchTo().frame(fswich3);
 	    WebElement fswich4 = driver.findElement(By.tagName("iframe"));

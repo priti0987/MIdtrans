@@ -15,7 +15,6 @@ public class homePage {
 	public void navigateToHomePage()
 	{
 		homePagedriver.get(URL);
-		homePagedriver.manage().timeouts().pageLoadTimeout(30,TimeUnit.SECONDS);
 		homePagedriver.manage().window().maximize();
 		return;
 

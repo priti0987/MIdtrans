@@ -1,10 +1,10 @@
 package Pages;
 
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.*;
 
 public class buyPillow {
 	 WebDriver driver;	 
@@ -27,26 +27,30 @@ public class buyPillow {
 
 	@SuppressWarnings("deprecation")
 	public void buyPillowPage() {
-		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(buyButtonXpath));
+		
 		driver.findElement(buyButtonXpath).click();
-		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		driver.findElement(checkoutButtonXpath).click();
-		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		
 		 WebElement fswich = driver.findElement(By.tagName("iframe"));
 	     driver.switchTo().frame(fswich);
+	     WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(continueButton));
+			
 	     driver.findElement(continueButton).click();
 	     driver.switchTo().defaultContent();
-	     driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 	 	
 	     WebElement fswich1 = driver.findElement(By.tagName("iframe"));
 	     driver.switchTo().frame(fswich1);
+	     WebElement element3 = wait.until(ExpectedConditions.elementToBeClickable(creditCadrButtonXpath));
+			
 	     driver.findElement(creditCadrButtonXpath).click();
 	     driver.switchTo().defaultContent();
 
 	}
 
-	@SuppressWarnings("deprecation")
 	public void enterCardDetails() {
 		WebElement fswich2 = driver.findElement(By.tagName("iframe"));
 	     driver.switchTo().frame(fswich2);
@@ -55,7 +59,6 @@ public class buyPillow {
 	     driver.findElement(cvvXpath).sendKeys(cvv);
 	     driver.findElement(payNowButtonXpath).click();
 	     driver.switchTo().defaultContent();
-	     driver.manage().timeouts().implicitlyWait(90,TimeUnit.SECONDS);
 	  	
 		
 	}
